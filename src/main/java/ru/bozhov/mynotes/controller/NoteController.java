@@ -12,8 +12,13 @@ import java.util.List;
 
 @Controller
 public class NoteController {
-    @Autowired
+    final
     NoteService noteService;
+
+    public NoteController(NoteService noteService) {
+        this.noteService = noteService;
+    }
+
     @GetMapping("/notes")
     public String getNotes(Model model){
         List<Note> notes = noteService.getNotes();

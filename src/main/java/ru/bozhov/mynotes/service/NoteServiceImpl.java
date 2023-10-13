@@ -12,8 +12,13 @@ import java.util.List;
 @Service
 public class NoteServiceImpl implements NoteService{
 
-    @Autowired
+    final
     NoteRepository noteRepository;
+
+    public NoteServiceImpl(NoteRepository noteRepository) {
+        this.noteRepository = noteRepository;
+    }
+
     @Override
     public List<Note> getNotes() {
         return noteRepository.findAll();
